@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <keep-alive>
+      <component v-bind:is="component"></component>
+    </keep-alive>
+   <button v-on:click="component='form-one'">Show form one</button>
+   <button v-on:click="component='form-two'">Show form Two</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
+import FormOne from './components/FormOne.vue'
+import FormTwo from './components/FormTwo.vue'
 
 export default {
-  name: 'app',
+
+  data(){
+
+    return{
+      component: 'form-two'
+    }
+  },
   components: {
-    HelloWorld
+
+    'form-one': FormOne,
+    'form-two': FormTwo
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
 </style>
